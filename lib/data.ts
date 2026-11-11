@@ -1,0 +1,268 @@
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+export interface Chip {
+  label: string
+}
+
+/**
+ * One full-width image in a work page's main column.
+ *
+ * To give an image a sidebar (scrollspy) link, add `nav`. The link is built from
+ * it automatically and jumps to this exact image. Images without `nav` simply
+ * render with no link.
+ */
+export interface WorkImage {
+  src: string
+  /**
+   * The file's pixel size. Images render at full column width with their own
+   * proportions, and this reserves the right space before they load so the
+   * sidebar jumps land in the correct place.
+   */
+  width: number
+  height: number
+  /** Describe the image for screen readers. Leave out if it's purely decorative. */
+  alt?: string
+  /** Adds a sidebar link pointing at this image. `anchor` must be unique within the project. */
+  nav?: { label: string; anchor: string }
+  /** Render this image blurred behind the "under NDA" message. */
+  nda?: boolean
+}
+
+export interface WorkMeta {
+  industry: string
+  role: string
+  timeline: string
+  tools: { name: string; icon: string }[]
+}
+
+export interface WorkProject {
+  slug: string
+  overline: string              // e.g. "UX Design Internship"
+  org: string                   // display name
+  orgLogo: string               // path in /public/icons/
+  title: string
+  subtitle: string
+  heroImage: string             // path in /public/images/work/
+  chips: Chip[]
+  // Home card body copy (Figma: card-body-main + hook line)
+  body?: string                 // main description paragraph
+  hook?: string                 // closing "If you are looking for…" line
+  meta: WorkMeta
+  badge?: string
+  /** Ordered full-width images in the main column. Sidebar links come from each image's `nav`. */
+  bodyImages: WorkImage[]
+}
+
+export interface SideQuestProject {
+  id: string
+  image: string
+  /** Optional clip that plays in a loop while the thumbnail is hovered */
+  video?: string
+  caption: string
+  chips: Chip[]
+}
+
+// ─── Work Projects ───────────────────────────────────────────────────────────
+
+export const workProjects: WorkProject[] = [
+  {
+    slug: 'amadeus-ux',
+    overline: 'UX Design Internship',
+    org: 'Amadeus',
+    orgLogo: '/images/logo/amadeus-logo-small.svg',
+    title: 'Making complex user journeys easier to navigate through clear and consistent UX communication',
+    subtitle:
+      'How we audited the user journeys & applied systems thinking to craft a UX language strategy for a complex B2B enterprise product',
+    body: 'Amadeus Central Reservation System (ACRS) grew back-to-front by merging different hospitality based customer products, leading to complex hierarchy and navigation issues. I applied systems thinking and audited the user journeys to craft a language strategy. Which is being used to create patterns & components for a unified Hospitality design system for 16+ products.',
+    hook: 'If you are looking for someone who can decode complex network to simple actional steps, this project shows how I think and achieve it.',
+    heroImage: '/images/work/amadeus-ux/amadeus-ux-hero.png',
+    chips: [
+      { label: 'Design System' },
+      { label: 'B2B' },
+      { label: 'SaaS' },
+      { label: 'Hospitality' },
+      { label: 'WCAG' },
+      { label: 'A11Y' },
+      { label: 'Graduation Project' },
+      { label: 'Language Strategy' },
+    ],
+    meta: {
+      industry: 'Hospitality',
+      role: 'UX Design Intern\n(UX Writer & Language Strategist)',
+      timeline: '6 months',
+      tools: [
+        { name: 'Figma',  icon: '/icons/tool-figma.png' },
+        { name: 'Notion', icon: '/icons/tool-notion.png' },
+      ],
+    },
+    bodyImages: [
+      { src: '/images/work/amadeus-ux/amadeus-ux-01.png', width: 1116, height: 628, nav: { label: 'About Amadeus', anchor: 'about-amadeus' } },
+      { src: '/images/work/amadeus-ux/amadeus-ux-02.png', width: 1116, height: 482, nav: { label: 'Overview',      anchor: 'overview' } },
+      { src: '/images/work/amadeus-ux/amadeus-ux-03.png', width: 1116, height: 732, nav: { label: 'Challenge',     anchor: 'Challenge' } },
+      { src: '/images/work/amadeus-ux/amadeus-ux-04.png', width: 1164, height: 814, nda: true },
+    ],
+  },
+  {
+    slug: 'amadeus-errors',
+    overline: 'UX Design Internship',
+    org: 'Amadeus',
+    orgLogo: '/images/logo/amadeus-logo-small.svg',
+    title: 'Turning Cryptic Backend Errors into Actionable Recovery Flows Using Real-User Telemetry & API Refracting',
+    subtitle: 'Placeholder — content coming soon.',
+    body: 'Developer-centric APIs led to cryptic errors codes. Users were forced into training manuals and numerous support tickets. I used DataDog RUM live telemetry, recordings and heatmaps to designed instant, user-centered, and  frictionless error recovery. Then collaborated with PMs and Devs to refactor APIs and shipped Figma-to-Angular UI using Kiro (Agentic AI IDE).',
+    hook: 'If you are looking for a product designer who speaks the developers language and can ship directly in code, then this project shows how I do it.',
+    heroImage: '/images/work/amadeus-errors/amadeus-errors-hero.png',
+    chips: [
+      { label: 'UX Writing' },
+      { label: 'Error Recovery' },
+      { label: 'SaaS' },
+      { label: 'API Refactoring' },
+      { label: 'DataDog RUM' },
+      { label: 'Hospitality' },
+      { label: 'Angular' },
+    ],
+    meta: {
+      industry: 'Hospitality',
+      role: 'UX Design Intern',
+      timeline: '3 months',
+      tools: [
+        { name: 'Figma',   icon: '/icons/tool-figma.png' },
+        { name: 'DataDog', icon: '/icons/tool-datadog.png' },
+      ],
+    },
+    bodyImages: [
+      { src: '/images/work/amadeus-errors/amadeus-errors-01.png', width: 1116, height: 628, nav: { label: 'About Amadeus', anchor: 'about-amadeus' } },
+      { src: '/images/work/amadeus-errors/amadeus-errors-02.png', width: 1116, height: 482, nav: { label: 'Overview',      anchor: 'overview' } },
+      { src: '/images/work/amadeus-errors/amadeus-errors-03.png', width: 1116, height: 732, nav: { label: 'Challenge',          anchor: 'Challenge' } },
+      { src: '/images/work/amadeus-errors/amadeus-errors-04.png', width: 1164, height: 814, nda: true },
+    ],
+  },
+  {
+    slug: 'kafego',
+    overline: 'M.Des. Classroom Project',
+    org: 'NID',
+    orgLogo: '/images/logo/nid-logo.svg',
+    title: 'Designing the Service of a 10-minute Quick-Commerce Korean Food Delivery App with a System Thinking Approach',
+    subtitle: 'Placeholder — content coming soon.',
+    body: 'Used system thining and business strategy to imagine the service of .  a 10-minute quick-commerce app. The aim was to create a greenfield, data-forecasted deliver service and mobile UX with target of high AOV through collaborative marketing strategy.',
+    hook: 'If you are looking for someone who can take a idea to a real-product, this project shows how I work.',
+    heroImage: '/images/work/kafego/kafego-hero.png',
+    chips: [
+      { label: 'Mobile UX' },
+      { label: 'Systems Thinking' },
+      { label: 'D2C' },
+      { label: 'Service Design' },
+      { label: 'Quick Commerce' },
+      { label: 'UI Design' },
+    ],
+    meta: {
+      industry: 'Food & Delivery',
+      role: 'UX & Service Designer',
+      timeline: '4 months',
+      tools: [
+        { name: 'Figma', icon: '/icons/tool-figma.png' },
+      ],
+    },
+    bodyImages: [
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Overview',   anchor: 'overview' } },
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Research',   anchor: 'research' } },
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Solution',   anchor: 'solution' } },
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Conclusion', anchor: 'conclusion' } },
+    ],
+  },
+  {
+    slug: 'nid-classroom',
+    overline: 'M.Des. Classroom Project',
+    org: 'NID',
+    orgLogo: '/images/logo/nid-logo.svg',
+    title: 'Engineered a Phygital In-store Assistant Providing Instant and Unbiased Skincare Information',
+    subtitle: 'Placeholder — content coming soon.',
+    body: 'I designed and engineered a phygital retail kiosk to reduce in-store confusion and increase confidence for purchasers. I combined ESP32/Arduino microcontroller, ultrasonic sensors, NeoPixel feedback, and video-based Machine Learning to identify picked-up products and render real-time, unbiased breakdowns in an interactive p5.js based UI.',
+    hook: 'If you are looking for someone who is a fast-learner who loves to tinker with upcoming technology, then this project shows exactly how much I love new media integrations.',
+    heroImage: '/images/work/clarity-shelf/clarity-shelf-hero.png',
+    chips: [
+      { label: 'Retail' },
+      { label: 'Programming' },
+      { label: 'Arduino' },
+      { label: 'Microcontrollers' },
+      { label: 'ML/AI' },
+      { label: 'UI Engineering' },
+      { label: 'Interaction Design' },
+    ],
+    meta: {
+      industry: 'Retail',
+      role: 'Interaction Designer & Engineer',
+      timeline: '6 months',
+      tools: [
+        { name: 'Figma',   icon: '/icons/tool-figma.png' },
+        { name: 'Arduino', icon: '/icons/tool-arduino.png' },
+      ],
+    },
+    badge: 'Showcased at SAP Impulsé\'25',
+    bodyImages: [
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Overview',   anchor: 'overview' } },
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Hardware',   anchor: 'hardware' } },
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Software',   anchor: 'software' } },
+      { src: '/images/work/placeholder-body.png', width: 1116, height: 628, nav: { label: 'Conclusion', anchor: 'conclusion' } },
+    ],
+  },
+]
+
+// ─── Side Quests ─────────────────────────────────────────────────────────────
+
+export const sideQuests: SideQuestProject[] = [
+  {
+    id: 'photography-nid',
+    image: '/images/sidequest/photography-thumb.png',
+    caption: 'Photography, Videography & Post-production for Classroom Projects and NID Blr\'s Social Media',
+    chips: [
+      { label: 'Photography' },
+      { label: 'Premiere Pro' },
+      { label: 'Social Media' },
+    ],
+  },
+  {
+    id: 'rubiks-cube',
+    image: '/images/sidequest/rubiks-cube.png',
+    video: '/images/sidequest/cube-anim.mp4',
+    caption: 'Rubik\'s Cube 3d Countdown Animation for Dfrost\'25 (NID Blr\'s Design Fest)',
+    chips: [
+      { label: 'Animation' },
+      { label: 'Motion Graphics' },
+      { label: 'Spline3d' },
+    ],
+  },
+  {
+    id: 'memory-forest',
+    image: '/images/sidequest/AR-project.png',
+    caption: "'Memory Forest' for Google Maps – A Geolocation based Collection (like Pokémon Go) AR Experience created in Unity",
+    chips: [
+      { label: 'AR/VR' },
+      { label: 'Experience Design' },
+      { label: 'Game Design' },
+      { label: 'Unity' },
+    ],
+  },
+  {
+    id: 'window-display',
+    image: '/images/sidequest/lighting-display.png',
+    caption: 'Built a Window Display for Sepoy&Co as part of Lighting Workshop at NID Blr',
+    chips: [
+      { label: 'Lighting' },
+      { label: 'Product Design' },
+      { label: 'Branding' },
+    ],
+  },
+  {
+    id: 'dfrost-poc',
+    image: '/images/sidequest/dfrost-poc.png',
+    caption: "Designed the Brand Guidelins and acted as the POC for Graphics and Social Media Team for D'frost 2025",
+    chips: [
+      { label: 'Graphic Design' },
+      { label: 'Branding' },
+      { label: 'People Management' },
+      { label: 'Team Leader' },
+    ],
+  },
+  
+]
