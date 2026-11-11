@@ -42,7 +42,7 @@ export function WorkSidebar({ links }: { links: SidebarLink[] }) {
           href={`#${anchor}`}
           className={`link-sweep self-start text-body transition-colors ${
             active === anchor
-              ? 'text-[var(--color-primary-500)] font-semibold'
+              ? 'text-[var(--color-primary-500)] font-medium'
               : 'text-[var(--color-text-default)] hover:text-[var(--color-primary-500)]'
           }`}
         >

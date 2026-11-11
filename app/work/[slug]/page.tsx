@@ -45,9 +45,7 @@ export default async function WorkPage({ params }: Params) {
 
         {/* Right column: metadata, then the images, then "view next" */}
         <div className="flex-1 min-w-0">
-          <div className="px-6 md:px-9">
-            <WorkMeta project={project} />
-          </div>
+          <WorkMeta project={project} />
 
           <WorkMain project={project} />
 

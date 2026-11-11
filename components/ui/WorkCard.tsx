@@ -17,7 +17,7 @@ export function WorkCard({ project, variant = 'full' }: WorkCardProps) {
     return (
       <Link
         href={`/work/${project.slug}`}
-        className="group flex gap-6 items-center p-6 border border-[var(--color-primary-200)] rounded-2xl w-full hover:border-[var(--color-primary-500)] transition-colors"
+        className="group flex gap-6 items-center p-6 border border-[var(--color-primary-200)] rounded-2xl w-full hover:border-[var(--color-primary-500)] hover:bg-[var(--color-white)] transition-colors duration-300"
       >
         {/* Text */}
         <div className="flex flex-col gap-8 flex-1 min-w-0">
