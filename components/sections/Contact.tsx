@@ -83,7 +83,7 @@ export function Contact() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-sweep text-body-strong text-[var(--color-text-secondary)] hover:text-[var(--color-primary-500)] transition-colors"
+                  className="link-sweep text-[var(--color-text-secondary)] hover:text-[var(--color-primary-500)] transition-colors"
                 >
                   {label}
                 </a>
