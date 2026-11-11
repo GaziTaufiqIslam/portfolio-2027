@@ -180,7 +180,7 @@ export function Navbar() {
             </div>
             {/* Tagline — Text Pro 55 Roman 24px dark */}
             <span
-              className="text-[var(--color-grey-900)] whitespace-nowrap hidden sm:block"
+              className="text-[var(--color-grey-900)] whitespace-nowrap hidden sm:block md:hidden lg:block"
               style={{
                 fontFamily: 'var(--font-body)',
                 fontWeight: 400,
@@ -243,7 +243,7 @@ export function Navbar() {
             <span className="w-1 h-1 rounded-full bg-[var(--color-border-tertiary)] shrink-0" />
             {/* Tagline — Text Pro 55 Roman 20px grey */}
             <span
-              className="whitespace-nowrap hidden sm:block"
+              className="whitespace-nowrap hidden sm:block md:hidden lg:block"
               style={{
                 fontFamily: 'var(--font-body)',
                 fontWeight: 400,

@@ -1,0 +1,181 @@
+/*
+  About page collage.
+
+  Large screens (1024px and up): one CSS grid taken from the Figma frame. Its column
+  and row lines sit on the exact edges of the photos and text, so each item is just
+  placed between two lines and the staircase falls out of the placements.
+
+    Column lines (x in the 1440px frame):
+      1:0  2:52  3:187  4:359  5:545  6:618  7:734  8:865  9:926  10:1131  11:1182  12:1440
+    Row lines (y, measured from the bottom of the navbar):
+      1:100  2:151  3:660  4:1079  5:1281  6:1483  7:1685  8:2160  9:2402  10:2643  11:2983
+
+  --u is one Figma pixel at the current width (container width / 1440), so the whole
+  collage scales with the screen. Text stays at its normal size and rows that hold text
+  can grow, so nothing overflows.
+
+  Below 1024px the collage is dropped for a simple stack in reading order.
+*/
+
+.frame {
+  container-type: inline-size;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+.grid,
+.strip,
+.thanks {
+  --u: calc(100cqw / 1440);
+}
+
+/* ─── Small screens: stacked, two columns so pairs can sit side by side ─── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid > * {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--ar);
+}
+
+/* The two portraits sit side by side */
+.grid > .mural,
+.grid > .lookingUp {
+  grid-column: auto;
+  aspect-ratio: 3 / 4;
+}
+
+.heading {
+  padding: 40px 24px 24px;
+}
+
+.text {
+  padding: 40px 24px;
+}
+
+.body p + p {
+  /* a blank line between paragraphs, like the design */
+  margin-top: 1.4em;
+}
+
+.purple { color: var(--color-primary-500); }
+.red    { color: var(--color-accent-700); }
+.lilac  { color: var(--color-primary-400); }
+
+/* The block titles take their colour from .purple / .red / .lilac above */
+.heading,
+.body {
+  color: var(--color-black-50);
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.strip .photo {
+  aspect-ratio: 1 / 1;
+}
+
+.thanks {
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--color-black-50);
+}
+
+@media (min-width: 640px) {
+  /* The two tall portraits would be over a thousand pixels high at full width, so pair them */
+  .grid > .reading,
+  .grid > .stairs {
+    grid-column: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .heading { padding: 48px 48px 24px; }
+  .text    { padding: 56px 48px; }
+  /* the scattered objects show from here, so no extra space is needed below */
+  .thanks  { padding: 80px 24px 0; }
+}
+
+/* ─── Large screens: the Figma grid ─── */
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns:
+      minmax(0, 52fr) minmax(0, 135fr) minmax(0, 172fr) minmax(0, 186fr)
+      minmax(0, 73fr) minmax(0, 116fr) minmax(0, 131fr) minmax(0, 61fr)
+      minmax(0, 205fr) minmax(0, 51fr) minmax(0, 258fr);
+    grid-template-rows:
+      calc(var(--u) * 51)
+      calc(var(--u) * 509)
+      minmax(calc(var(--u) * 419), auto)
+      calc(var(--u) * 202)
+      calc(var(--u) * 202)
+      calc(var(--u) * 202)
+      minmax(calc(var(--u) * 475), auto)
+      calc(var(--u) * 242)
+      calc(var(--u) * 241)
+      minmax(calc(var(--u) * 340), auto);
+  }
+
+  /* Photos fill whatever cell they are placed in */
+  .grid > .photo {
+    aspect-ratio: auto;
+  }
+
+  .heading,
+  .text {
+    padding: 0;
+  }
+
+  .heading { grid-column: 2 / 5;  grid-row: 2 / 3;  align-self: center; }
+
+  /* The shorter portrait keeps its own proportions; the taller one fills its cell */
+  .grid > .mural     { grid-column: 9 / 11;  grid-row: 2 / 3;  align-self: start; aspect-ratio: var(--ar); }
+  .grid > .lookingUp { grid-column: 11 / 12; grid-row: 2 / 3;  aspect-ratio: auto; }
+
+  .grid > .armchair  { grid-column: 1 / 5;   grid-row: 3 / 4; }
+  .textSystems       { grid-column: 6 / 12;  grid-row: 3 / 4;  align-self: center; max-width: calc(var(--u) * 588); }
+  .textSystems .body { max-width: calc(var(--u) * 532); }
+
+  .grid > .group     { grid-column: 3 / 8;   grid-row: 4 / 6; }
+  .grid > .sunset    { grid-column: 8 / 12;  grid-row: 5 / 7; }
+
+  .grid > .reading   { grid-column: 10 / 12; grid-row: 7 / 8; }
+  /* In the design only the paragraphs are 584px wide; the long title stays on one line */
+  .textBusiness      { grid-column: 2 / 10;  grid-row: 7 / 8;  align-self: center; }
+  .textBusiness .title { white-space: nowrap; }
+  .textBusiness .body  { max-width: calc(var(--u) * 584); }
+
+  .grid > .stairs    { grid-column: 1 / 4;   grid-row: 8 / 10; }
+  .textKeeps         { grid-column: 7 / 12;  grid-row: 9 / 11; align-self: start;  max-width: calc(var(--u) * 584); }
+  .grid > .moto      { grid-column: 1 / 5;   grid-row: 10 / 11; }
+
+  /* Four photos in a row; each keeps its own proportions, so the bottoms stagger */
+  .strip {
+    grid-template-columns:
+      minmax(0, 398fr) minmax(0, 275fr) minmax(0, 340fr) minmax(0, 427fr);
+    align-items: start;
+  }
+
+  .strip .photo {
+    aspect-ratio: var(--ar);
+  }
+
+  .thanks {
+    padding: calc(var(--u) * 120) 24px 0;
+  }
+}

@@ -318,3 +318,111 @@ export const sideQuests: SideQuestProject[] = [
   },
   
 ]
+
+// ─── About page ──────────────────────────────────────────────────────────────
+
+export interface AboutPhoto {
+  src: string
+  /** The file's pixel size (used for its proportions on small screens) */
+  width: number
+  height: number
+  alt: string
+  /** Rough share of the viewport width the photo takes: on large screens, and on small screens */
+  lgVw: number
+  smVw: number
+}
+
+export const aboutPhotos = {
+  portraitMural: {
+    src: '/images/about-me/portrait-mural.png', width: 387, height: 483,
+    alt: 'Portrait of a man with arms crossed, standing in front of a colourful mural',
+    lgVw: 18, smVw: 50,
+  },
+  portraitLookingUp: {
+    src: '/images/about-me/portrait-looking-up.png', width: 387, height: 764,
+    alt: 'A man in a cap and light shirt looking upwards, holding a tote bag',
+    lgVw: 18, smVw: 50,
+  },
+  armchair: {
+    src: '/images/about-me/armchair.png', width: 818, height: 629,
+    alt: 'A man sitting in a yellow armchair next to a window',
+    lgVw: 38, smVw: 100,
+  },
+  groupTable: {
+    src: '/images/about-me/group-table.png', width: 1017, height: 606,
+    alt: 'A group of friends gathered around a round table in a garden café',
+    lgVw: 47, smVw: 100,
+  },
+  sunsetTerrace: {
+    src: '/images/about-me/sunset-terrace.png', width: 863, height: 606,
+    alt: 'Two people walking along a terrace under a dusky purple sky',
+    lgVw: 40, smVw: 100,
+  },
+  reading: {
+    src: '/images/about-me/reading.png', width: 464, height: 713,
+    alt: 'A man leaning on a wall, reading a book',
+    lgVw: 22, smVw: 100,
+  },
+  stairs: {
+    src: '/images/about-me/stairs.png', width: 539, height: 725,
+    alt: 'A dim corridor with a staircase and pink and orange lighting',
+    lgVw: 25, smVw: 100,
+  },
+  motorbikeGauge: {
+    src: '/images/about-me/motorbike-gauge.png', width: 818, height: 510,
+    alt: 'Close-up of the round digital gauge on a Harley-Davidson motorcycle',
+    lgVw: 38, smVw: 100,
+  },
+  galleryGroup: {
+    src: '/images/about-me/gallery-group.png', width: 597, height: 342,
+    alt: 'Four people posing together in an art gallery',
+    lgVw: 28, smVw: 50,
+  },
+  nightPortrait: {
+    src: '/images/about-me/night-portrait.png', width: 413, height: 477,
+    alt: 'A man in a cap at night with palm trees behind him',
+    lgVw: 19, smVw: 50,
+  },
+  sketch: {
+    src: '/images/about-me/sketch.png', width: 510, height: 590,
+    alt: 'A pencil sketch of a jerry can on paper, with pens beside it',
+    lgVw: 24, smVw: 50,
+  },
+  fishingNets: {
+    src: '/images/about-me/fishing-nets.png', width: 641, height: 473,
+    alt: 'Chinese fishing nets silhouetted over the water at dusk',
+    lgVw: 30, smVw: 50,
+  },
+} satisfies Record<string, AboutPhoto>
+
+export interface AboutText {
+  heading: string
+  /** One entry per paragraph */
+  paragraphs: string[]
+}
+
+export const aboutText = {
+  systems: {
+    heading: 'Think in Systems X Human in the Centre',
+    paragraphs: [
+      'I love making things with my hand, be it in a workshop or sitting on a desk with a laptop.',
+      'My background is a bit of a mixed bag. First, I spent five years studying computer science and engineering. Applied those knowledge in making web sites for people.',
+      'Now, I am finishing my Masters of Design in Retail Experience at National Institute of Design, Bangalore. This path taught me to think like a coder in systems and connections, but build for the real people.',
+    ],
+  },
+  business: {
+    heading: 'Not just Pretty Screens but Business Goals & Metrics',
+    paragraphs: [
+      'Before design school, I ran my own design and tech studio, kind of a startup, for three years. It was incredibly hands-on work. I managed everything between client negotiations, project management, social media strategy to visual content creation.',
+      'That experience showed me exactly how product strategy and user trust play out in the real world. Today, I use those same practical skills across all my work. I design user interfaces, build interactive hardware prototypes and even create content.',
+    ],
+  },
+  keepsMeGoing: {
+    heading: 'What keeps me going',
+    paragraphs: [
+      'Riding motorcycles gives me way more energy than caffeine. In weekends I play football and in the evening I shout for the not-so table toppers english club Manchester United.',
+      'I watch a ton of movies, some of the people whose works I follow closely are Satyajit Ray, Wes Anderson and the Ghibli Studio. All these not only give me inspiration to create something new but helps me think in more ways than one.',
+      'I play relaxing but mind-intensive sim-games, create Pinterest boards of just random things that have a common pattern, sketch in monochrome, read fiction (specially thrillers and mysteries) and also poetry, mostly in my native tongue Bangla.',
+    ],
+  },
+} satisfies Record<string, AboutText>

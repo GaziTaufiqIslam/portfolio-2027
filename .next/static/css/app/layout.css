@@ -266,6 +266,9 @@
   .inline-flex {
     display: inline-flex;
   }
+  .table {
+    display: table;
+  }
   .aspect-\[481\/400\] {
     aspect-ratio: 481/400;
   }
@@ -299,9 +302,6 @@
   }
   .h-6 {
     height: calc(var(--spacing) * 6);
-  }
-  .h-10 {
-    height: calc(var(--spacing) * 10);
   }
   .h-\[30px\] {
     height: 30px;
@@ -369,20 +369,11 @@
   .w-28 {
     width: calc(var(--spacing) * 28);
   }
-  .w-56 {
-    width: calc(var(--spacing) * 56);
-  }
   .w-\[32px\] {
     width: 32px;
   }
-  .w-\[100px\] {
-    width: 100px;
-  }
   .w-\[159px\] {
     width: 159px;
-  }
-  .w-\[160px\] {
-    width: 160px;
   }
   .w-\[168px\] {
     width: 168px;
@@ -390,14 +381,8 @@
   .w-\[169px\] {
     width: 169px;
   }
-  .w-\[204px\] {
-    width: 204px;
-  }
   .w-\[252px\] {
     width: 252px;
-  }
-  .w-\[260px\] {
-    width: 260px;
   }
   .w-\[280px\] {
     width: 280px;
@@ -591,12 +576,6 @@
     border-color: var(--color-border-tertiary);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-border-tertiary) 30%, transparent);
-    }
-  }
-  .border-\[var\(--color-border-tertiary\)\]\/40 {
-    border-color: var(--color-border-tertiary);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-border-tertiary) 40%, transparent);
     }
   }
   .border-\[var\(--color-primary-200\)\] {
@@ -907,6 +886,9 @@
     }
   }
   @media (width >= 64rem) {
+    .lg\:block {
+      display: block;
+    }
     .lg\:flex {
       display: flex;
     }
@@ -980,6 +962,7 @@
   --color-bg: #fdf7f2;
   --color-primary-100: #f5e8f9;
   --color-primary-200: #ddbcea;
+  --color-primary-400: #a470bd;
   --color-primary-500: #62347d;
   --color-accent-100: #ffebe4;
   --color-accent-200: #f9a68f;
