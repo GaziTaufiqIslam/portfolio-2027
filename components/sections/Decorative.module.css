@@ -1,0 +1,82 @@
+/*
+  Decorative stickers: a little canvas you can rearrange.
+
+  Everything is sized in design pixels multiplied by --s, which the section sets per breakpoint
+  (see Decorative.tsx), so the scene shrinks as a whole on smaller screens.
+*/
+
+.section {
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Graph paper: 1px lines every 24 design pixels, in Primary/200. Only visible while a sticker is held. */
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  background-image:
+    linear-gradient(to right, var(--color-primary-200) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-primary-200) 1px, transparent 1px);
+  background-size: calc(24px * var(--s)) calc(24px * var(--s));
+  /* Whole-pixel cells keep every line crisp. Browsers without round() use the line above. */
+  background-size: round(calc(24px * var(--s)), 1px) round(calc(24px * var(--s)), 1px);
+}
+
+.dragging .grid {
+  opacity: 1;
+}
+
+/* One sticker. --dx / --dy are the live drag offset, set from script while it is held. */
+.item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  touch-action: none; /* dragging a sticker must not scroll the page */
+  transform: translate(var(--dx, 0px), var(--dy, 0px));
+}
+
+.item.held {
+  cursor: grabbing;
+  will-change: transform;
+}
+
+/* After a double-click the sticker glides back to its starting spot */
+.item.resetting {
+  transition: left 300ms ease, top 300ms ease;
+}
+
+.body {
+  position: relative;
+  pointer-events: none; /* the box above takes the pointer, so the image is never dragged natively */
+  transform: rotate(var(--r));
+  transition: transform 150ms ease-out, filter 150ms ease-out;
+}
+
+/* Held: lifts to 1.2x (Figma shows 1.366x, which felt like too much), keeps its tilt, soft shadow that follows the sticker's outline */
+.held .body {
+  transform: rotate(var(--r)) scale(1.2);
+  filter: drop-shadow(4px 4px 16px var(--color-shadow-lift));
+}
+
+.body img {
+  -webkit-user-drag: none;
+}
+
+/* (The page-wide grabbing cursor while dragging lives in globals.css: a CSS module can't hold it.) */
+
+@media (prefers-reduced-motion: reduce) {
+  .grid,
+  .body,
+  .item.resetting {
+    transition: none;
+  }
+}

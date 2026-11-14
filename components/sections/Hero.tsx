@@ -12,7 +12,8 @@ const keywords = [
 
 export function Hero() {
   return (
-    <section className="max-w-[1600px] mx-auto px-6 md:px-12 py-16 lg:py-0 lg:min-h-[520px] flex items-center">
+    // xl and up: no fixed height. The section is as tall as its content plus 4vh above and below.
+    <section className="max-w-[1600px] mx-auto px-6 md:px-12 py-16 lg:py-0 lg:min-h-[520px] xl:min-h-0 xl:py-[4vh] flex items-center">
       <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-between">
 
         {/* Left — text */}

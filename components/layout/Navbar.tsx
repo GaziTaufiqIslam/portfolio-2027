@@ -59,6 +59,53 @@ function Hamburger({ open, onClick }: { open: boolean; onClick: () => void }) {
   )
 }
 
+/** Icon logo, name and role. Used by both the tall and the compact bar so they always match. */
+function Brand() {
+  return (
+    <a href="/" className="flex items-center gap-2 shrink-0">
+      {/* Small icon logo */}
+      <div className="relative h-[47px] w-[32px] shrink-0 overflow-hidden">
+        <Image
+          src="/images/logo/icon-logo.svg"
+          alt="Gazi Taufiq"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+      {/* Name in body font — Text Pro 65 Medium 20px */}
+      <span
+        className="text-[var(--color-black-50)] whitespace-nowrap"
+        style={{
+          fontFamily: 'var(--font-body)',
+          fontWeight: 600,
+          fontSize: '20px',
+          lineHeight: 1.2,
+          letterSpacing: '-0.4px',
+        }}
+      >
+        Gazi Taufiq
+      </span>
+      {/* Dot separator */}
+      <span className="w-1 h-1 rounded-full bg-[var(--color-border-tertiary)] shrink-0" />
+      {/* Role — Text Pro 55 Roman 20px. Hidden at tablet widths where it would run into the links. */}
+      <span
+        className="whitespace-nowrap hidden sm:block md:hidden lg:block"
+        style={{
+          fontFamily: 'var(--font-body)',
+          fontWeight: 400,
+          fontSize: '20px',
+          lineHeight: 1.25,
+          letterSpacing: '-0.4px',
+          color: 'var(--color-grey-900)',
+        }}
+      >
+        Product Designer | UI Engineer
+      </span>
+    </a>
+  )
+}
+
 export function Navbar() {
   const pathname = usePathname()
   // The compact bar is visible only while scrolling up, past SCROLL_THRESHOLD.
@@ -167,31 +214,7 @@ export function Navbar() {
           aria-label="Primary"
           className="max-w-[1600px] mx-auto px-12 h-full flex items-center justify-between"
         >
-          <a href="/" className="flex flex-row items-center gap-4 shrink-0">
-            {/* Full wordmark */}
-            <div className="relative h-[56px] w-[159px] shrink-0 overflow-hidden">
-              <Image
-                src="/images/logo/wordmark.svg"
-                alt="Gazi Taufiq"
-                fill
-                className="object-contain object-left"
-                priority
-              />
-            </div>
-            {/* Tagline — Text Pro 55 Roman 24px dark */}
-            <span
-              className="text-[var(--color-grey-900)] whitespace-nowrap hidden sm:block md:hidden lg:block"
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontWeight: 400,
-                fontSize: '24px',
-                lineHeight: 1.2,
-                letterSpacing: '-0.48px',
-              }}
-            >
-              Product Designer | UI Engineer
-            </span>
-          </a>
+          <Brand />
 
           {renderLinks()}
           <Hamburger open={openMenu === 'tall'} onClick={() => toggleMenu('tall')} />
@@ -215,47 +238,7 @@ export function Navbar() {
           aria-label="Primary (sticky)"
           className="max-w-[1600px] mx-auto px-12 h-full flex items-center justify-between"
         >
-          <a href="/" className="flex items-center gap-2 shrink-0">
-            {/* Small icon logo */}
-            <div className="relative h-[47px] w-[32px] shrink-0 overflow-hidden">
-              <Image
-                src="/images/logo/icon-logo.svg"
-                alt="Gazi Taufiq"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            {/* Name in body font — Text Pro 65 Medium 20px */}
-            <span
-              className="text-[var(--color-black-50)] whitespace-nowrap"
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontWeight: 600,
-                fontSize: '20px',
-                lineHeight: 1.2,
-                letterSpacing: '-0.4px',
-              }}
-            >
-              Gazi Taufiq
-            </span>
-            {/* Dot separator */}
-            <span className="w-1 h-1 rounded-full bg-[var(--color-border-tertiary)] shrink-0" />
-            {/* Tagline — Text Pro 55 Roman 20px grey */}
-            <span
-              className="whitespace-nowrap hidden sm:block md:hidden lg:block"
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontWeight: 400,
-                fontSize: '20px',
-                lineHeight: 1.25,
-                letterSpacing: '-0.4px',
-                color: 'var(--color-grey-900)',
-              }}
-            >
-              Product Designer | UI Engineer
-            </span>
-          </a>
+          <Brand />
 
           {renderLinks()}
           <Hamburger open={openMenu === 'compact'} onClick={() => toggleMenu('compact')} />

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { cityBuildings, cityKeyframesCss, tramKeyframesCss } from './loaderScene'
 
 /** sessionStorage key. Must match the inline script in app/layout.tsx. */
 const STORAGE_KEY = 'loaderSeen'
@@ -84,16 +85,33 @@ export function Loader() {
       {/* Lavender screen with tram, wordmark and tagline */}
       <div className={`loader-screen${wiping ? ' is-wiping' : ''}`}>
         <div className="flex flex-col items-center">
-          <div className="loader-tram">
-            <Image src="/images/tram.png" alt="" width={138} height={117} priority />
+          {/* Keyframes for the city and the tram are generated from loaderScene.ts */}
+          <style>{`${cityKeyframesCss()}\n${tramKeyframesCss()}`}</style>
+
+          {/* Scene: hand-drawn city (behind) and the tram (in front) */}
+          <div className="loader-scene">
+            {cityBuildings.map((building) => (
+              <div
+                key={building.id}
+                className="city-building"
+                style={{ ...building.initialStyle, animationName: building.animation }}
+              >
+                <Image src={building.src} alt="" fill priority className="object-contain" />
+              </div>
+            ))}
+            <div className="loader-tram">
+              <Image src="/images/loader/tram.png" alt="" fill priority className="object-contain" />
+            </div>
           </div>
+
           <Image
             src="/images/logo/wordmark.svg"
             alt=""
             width={179}
             height={69}
             priority
-            className="mt-[48px] object-contain"
+            // 48px, or 4vh if that is larger
+            className="mt-[max(48px,4vh)] object-contain"
           />
           <p className="text-body mt-4 whitespace-nowrap text-[var(--color-black)]">
             Product Designer | UI Engineer
