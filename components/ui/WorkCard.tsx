@@ -117,11 +117,6 @@ export function WorkCard({ project, variant = 'full' }: WorkCardProps) {
             sizes="(max-width: 1024px) 100vw, 486px"
             quality={70}
           />
-          {project.badge && (
-            <div className="absolute bottom-3 right-3 bg-[var(--color-white)] text-[var(--color-black-50)] text-small-strong px-3 py-1 rounded-full shadow">
-              {project.badge}
-            </div>
-          )}
         </div>
       </div>
     </Link>

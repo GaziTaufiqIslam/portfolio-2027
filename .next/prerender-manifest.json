@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/work/amadeus-ux":{},"/work/amadeus-errors":{},"/work/kafego":{},"/work/nid-classroom":{}},"dynamicRoutes":{"/work/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/work/[slug]","routeRegex":"^\\/work\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"54452657c7a037f10a499623d0c53180","previewModeSigningKey":"057d09c2a0f28dc88d02bac0ea88eedd718fc4234a5396b55b18d1846b342a7e","previewModeEncryptionKey":"1757488e89657094796fc77313771833a95a492bf2f96bab08d1af7f32365f12"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "2af68d4b390dd8d0f1caabbd1a05b1d9",
+    "previewModeSigningKey": "52465bdab478e5d02d08dcded5cd73d5042ac4911eec24520f2ded1e201e9790",
+    "previewModeEncryptionKey": "0904d15ab07c1ce3d4650c04e20c0f87000321d91f526a25f3e10e5a4adb36eb"
+  }
+}

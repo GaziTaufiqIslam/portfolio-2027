@@ -48,7 +48,6 @@ export interface WorkProject {
   body?: string                 // main description paragraph
   hook?: string                 // closing "If you are looking for…" line
   meta: WorkMeta
-  badge?: string
   /** Ordered full-width images in the main column. Sidebar links come from each image's `nav`. */
   bodyImages: WorkImage[]
 }
@@ -70,11 +69,11 @@ export const workProjects: WorkProject[] = [
     overline: 'UX Design Internship',
     org: 'Amadeus',
     orgLogo: '/images/logo/amadeus-logo-small.svg',
-    title: 'Making complex user journeys easier to navigate through clear and consistent UX communication',
+    title: 'Untangling Enterprise User Journeys with a Unified UX Communication',
     subtitle:
-      'How we audited the user journeys & applied systems thinking to craft a UX language strategy for a complex B2B enterprise product',
-    body: 'Amadeus Central Reservation System (ACRS) grew back-to-front by merging different hospitality based customer products, leading to complex hierarchy and navigation issues. I applied systems thinking and audited the user journeys to craft a language strategy. Which is being used to create patterns & components for a unified Hospitality design system for 16+ products.',
-    hook: 'If you are looking for someone who can decode complex network to simple actional steps, this project shows how I think and achieve it.',
+      'How I audited user journeys and applied systems thinking to craft a UX language strategy for Amadeus’s complex B2B reservation system, now being adopted across 16+ Hospitality products',
+    body: 'Amadeus Central Reservation System (ACRS) grew ‘back-to-front’ by merging different hospitality based customer products, leading to complex hierarchy and navigation issues. I applied systems thinking and audited the user journeys to craft a language strategy. The strategy now guides the patterns & components of a unified Hospitality design system for 16+ products.',
+    hook: 'If you need a thinker and maker who can decode complex network to simple actionable steps, this project shows how I think and achieve it.',
     heroImage: '/images/work/amadeus-ux/amadeus-ux-hero.png',
     chips: [
       { label: 'Design System' },
@@ -107,10 +106,10 @@ export const workProjects: WorkProject[] = [
     overline: 'UX Design Internship',
     org: 'Amadeus',
     orgLogo: '/images/logo/amadeus-logo-small.svg',
-    title: 'Turning Cryptic Backend Errors into Actionable Recovery Flows Using Real-User Telemetry & API Refracting',
-    subtitle: 'Using Datadog RUM telemetry, session recordings, and heatmaps, I transformed cryptic system errors into clear, actionable recovery experiences. I then partnered with PMs and developers to refactor the APIs.',
-    body: 'Developer-centric APIs led to cryptic errors codes. Users were forced into training manuals and numerous support tickets. I used DataDog RUM live telemetry, recordings and heatmaps to designed instant, user-centered, and  frictionless error recovery. Then collaborated with PMs and Devs to refactor APIs and shipped Figma-to-Angular UI using Kiro (Agentic AI IDE).',
-    hook: 'If you are looking for a product designer who speaks the developers language and can ship directly in code, then this project shows how I do it.',
+    title: 'Turning Cryptic Errors into Clear and Actionable Recovery Flows',
+    subtitle: 'Using Datadog RUM telemetry, session recordings and heatmaps, I turned cryptic system errors into clear, actionable recovery flows. I then partnered with PMs and developers to refactor the APIs',
+    body: 'Developer-centric APIs led to cryptic error codes. Users were forced into training manuals and numerous support tickets. I used DataDog RUM live telemetry, recordings and heat-maps to design instant, user-centered, and frictionless error recovery. Then collaborated with PMs and Devs for API refactoring and shipped Figma-to-Angular UI using Kiro (Agentic AI IDE).',
+    hook: 'If you need a product designer who speaks the developer’s language and ships directly in code, this project shows how I work.',
     heroImage: '/images/work/amadeus-errors/amadeus-errors-hero.png',
     chips: [
       { label: 'UX Writing' },
@@ -143,10 +142,10 @@ export const workProjects: WorkProject[] = [
     overline: 'M.Des. Classroom Project',
     org: 'NID',
     orgLogo: '/images/logo/nid-logo.svg',
-    title: 'Designing the Service of a 10-minute Quick-Commerce Korean Food Delivery App with a System Thinking Approach',
+    title: 'Designing a 10-minute Korean Food Delivery Service with a System Thinking Approach',
     subtitle: 'How optimising systems enabled authentic dining ritual without breaking the instant food delivery logistics model',
-    body: 'Used system thining and business strategy to imagine the service of .  a 10-minute quick-commerce app. The aim was to create a greenfield, data-forecasted deliver service and mobile UX with target of high AOV through collaborative marketing strategy.',
-    hook: 'If you are looking for someone who can take an idea to a real-product, this project shows how I work.',
+    body: 'I used systems design and business strategy to shape a 10-minute quick-commerce Korean food service and its mobile app. The aim was to create a greenfield, demand-forecasted delivery service and mobile UX targeting a high AOV through collaborative marketing strategy.',
+    hook: 'If you are looking for someone who can take an idea to a real product, this project shows how I work.',
     heroImage: '/images/work/kafego/kafego-hero.png',
     chips: [
       { label: 'Mobile UX' },
@@ -155,6 +154,7 @@ export const workProjects: WorkProject[] = [
       { label: 'Service Design' },
       { label: 'Quick Commerce' },
       { label: 'UI Design' },
+      { label: 'Speculative Design' },
     ],
     meta: {
       industry: 'Food & Delivery',
@@ -222,10 +222,10 @@ export const workProjects: WorkProject[] = [
     overline: 'M.Des. Classroom Project',
     org: 'NID',
     orgLogo: '/images/logo/nid-logo.svg',
-    title: 'Engineered a Phygital In-store Assistant Providing Instant and Unbiased Skincare Information',
+    title: 'An Interactive Phygital Kiosk for Instant, Unbiased Skincare Advice',
     subtitle: 'How a digital kiosk in a retail store help users validate their choices and increase confidence in purchases',
-    body: 'I designed and engineered a phygital retail kiosk to reduce in-store confusion and increase confidence for purchasers. I combined ESP32/Arduino microcontroller, ultrasonic sensors, NeoPixel feedback, and video-based Machine Learning to identify picked-up products and render real-time, unbiased breakdowns in an interactive p5.js based UI.',
-    hook: 'If you are looking for someone who is a fast-learner who loves to tinker with upcoming technology, then this project shows exactly how much I love new media integrations.',
+    body: 'I designed and engineered a phygital retail kiosk to reduce in-store confusion and help skincare shoppers buy with confidence. Using an ESP32/Arduino, ultrasonic sensors, NeoPixel feedback and video-based machine learning, the kiosk detects picked-up products and shows real-time, unbiased ingredient breakdowns in an interactive p5.js interface.',
+    hook: 'If you’re looking for a fast learner who loves tinkering with emerging technology, this project shows how I explore new media.',
     heroImage: '/images/work/clarity-shelf/clarity-shelf-hero.png',
     chips: [
       { label: 'Retail' },
@@ -251,7 +251,6 @@ export const workProjects: WorkProject[] = [
         { name: 'Gemini',     icon: '/images/tools/tool-gemini.svg' },
       ],
     },
-    badge: 'Showcased at SAP Impulsé\'25',
     bodyImages: [
       { src: '/images/work/clarity-shelf/clarity-shelf-01.png', width: 1440, height: 2616, alt: 'Overview', nav: { label: 'Overview', anchor: 'overview' } },
       { src: '/images/work/clarity-shelf/clarity-shelf-02.png', width: 1440, height: 4230, alt: 'Process image 1', nav: { label: 'Process', anchor: 'process' } },
