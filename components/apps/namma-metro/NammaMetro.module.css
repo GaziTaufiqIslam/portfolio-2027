@@ -1,0 +1,161 @@
+/* Marker overlay over the hidden station's circle (44px tap area) */
+.marker {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  padding: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.marker.idle,
+.marker.armed,
+.marker.hover {
+  border: 3px dashed var(--color-primary-500);
+  background: transparent;
+}
+.marker.armed {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.marker.hover {
+  background: var(--color-primary-100);
+  border-style: solid;
+}
+.marker.solved {
+  padding: 8px;
+  border: 0;
+}
+
+/* The code chip, which doubles as the focusable drop zone */
+.zone {
+  position: absolute;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 2px dashed var(--color-accent-700);
+  background: var(--color-accent-100);
+  color: var(--color-accent-700);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.zone.armed {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-100);
+  color: var(--color-primary-500);
+}
+.zone.hover {
+  border-style: solid;
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-200);
+  color: var(--color-black-50);
+}
+.zone.solved {
+  border: 2px solid var(--color-status-success);
+  background: var(--color-white);
+  color: var(--color-black-50);
+  animation: snap 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.zone:focus-visible,
+.option:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--color-primary-500);
+  outline-offset: 3px;
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0%, 100% { translate: 0 0; }
+  20% { translate: -8px 0; }
+  40% { translate: 8px 0; }
+  60% { translate: -6px 0; }
+  80% { translate: 6px 0; }
+}
+@keyframes snap {
+  0% { scale: 0.85; }
+  100% { scale: 1; }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 0 6px var(--color-primary-200); }
+}
+
+/* Answer options */
+.option {
+  min-height: 52px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-primary-200);
+  background: var(--color-white);
+  color: var(--color-black-50);
+  touch-action: none; /* lets us drag without the page scrolling */
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.option.selected {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-100);
+}
+.option.dragging {
+  opacity: 0.4;
+}
+.option.tried {
+  border-style: dashed;
+  border-color: var(--color-accent-700);
+  background: var(--color-accent-100);
+  color: var(--color-accent-700);
+  cursor: not-allowed;
+  touch-action: auto;
+}
+.ghost {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  transform: translate(-50%, -120%);
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--color-primary-500);
+  color: var(--color-white);
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+}
+
+.btn {
+  min-height: 52px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: var(--color-primary-500);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.btn:hover {
+  background: var(--color-black-50);
+}
+.btn.secondary {
+  background: var(--color-white);
+  color: var(--color-primary-500);
+  border: 2px solid var(--color-primary-500);
+}
+.btn.secondary:hover {
+  background: var(--color-primary-100);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shake, .zone.solved, .marker.armed {
+    animation: none;
+  }
+}

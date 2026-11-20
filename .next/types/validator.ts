@@ -54,6 +54,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../app/apps/namma-metro-quizz/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/apps/namma-metro-quizz">> = Specific
+  const handler = {} as typeof import("../../app/apps/namma-metro-quizz/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/">> = Specific

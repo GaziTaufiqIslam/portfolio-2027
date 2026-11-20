@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="444 50 185 150" width="185" height="150" fill="none" role="img" aria-label="Namma Metro Purple Line, part 3 of 5">
+<path d="M0 58H525.601C530.019 58 533.601 54.4183 533.601 50V13C533.601 8.58172 537.183 5 541.601 5H856.186C858.308 5 860.343 5.84285 861.843 7.34315L902.5 48" transform="translate(49 95)" stroke="#A753FA" stroke-width="10"/>
+<circle id="station-08-halasuru" data-station="halasuru" cx="478" cy="153" r="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+<circle id="station-09-indiranagar" data-station="indiranagar" cx="546" cy="153" r="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+<circle id="station-10-swami-vivekananda-road" data-station="swami-vivekananda-road" cx="600" cy="100" r="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+</svg>

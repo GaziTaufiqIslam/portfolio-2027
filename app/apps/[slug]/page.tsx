@@ -7,7 +7,7 @@ type Props = { params: Promise<{ slug: string }> }
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return apps.map((a) => ({ slug: a.slug }))
+  return apps.filter((a) => a.status === 'coming-soon').map((a) => ({ slug: a.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

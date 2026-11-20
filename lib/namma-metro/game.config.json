@@ -1,0 +1,96 @@
+{
+  "gameUrl": "https://gazitaufiq.in/apps/namma-metro-quizz",
+  "welcome": {
+    "title": "Be in the User's Shoes",
+    "intro": "Feel how users feel when they see a cryptic code instead of a clear, actionable error message. This is simulated through the Bengaluru Namma Metro map.",
+    "question": "How well do you know Bengaluru's Namma Metro? Can you guess the cryptic stations?",
+    "howToPlay": [
+      "5 parts of the Purple Line",
+      "One station per part is a code",
+      "Pick the right name from 4 options"
+    ],
+    "startLabel": "Start",
+    "footer": "Made by Gazi Taufiq | UX Intern | Amadeus HOS"
+  },
+  "play": {
+    "correct": "{name}. Now it makes sense.",
+    "wrong": "Not that one. Try again.",
+    "pickFirst": "Pick a station name first, then tap the code.",
+    "hintLabel": "Hint",
+    "nextLabel": "Next part",
+    "finishLabel": "See my result"
+  },
+  "result": {
+    "heading": "Congratulations! You navigated the Purple Line",
+    "line": "Now you know how users feel when an error is just a code."
+  },
+  "scoring": {
+    "perPart": 100,
+    "wrongPenalty": 20,
+    "hintPenalty": 30
+  },
+  "optionsCount": 4,
+  "share": {
+    "message": "I just guessed the cryptic stations on Namma Metro's Purple Line! 🚇💜\n\nA Namma Metro station guessing game made by @gazitaufiq (https://www.linkedin.com/in/gazitaufiq/)\n\nSaw this at UX Day 2026 by Amadeus. Such a fun, clever way to show why clear error messages matter. Thank you for the great idea! 👏\n\nPlay it here: {GAME_URL}"
+  },
+  "stations": [
+    { "id": "ksr", "name": "KSR" },
+    { "id": "majestic", "name": "Majestic" },
+    { "id": "central-college", "name": "Central College" },
+    { "id": "vidhana-soudha", "name": "Vidhana Soudha" },
+    { "id": "cubbon-park", "name": "Cubbon Park" },
+    { "id": "mg-road", "name": "MG Road" },
+    { "id": "trinity", "name": "Trinity" },
+    { "id": "halasuru", "name": "Halasuru" },
+    { "id": "indiranagar", "name": "Indiranagar" },
+    { "id": "swami-vivekananda-road", "name": "Swami Vivekananda Road" },
+    { "id": "baiyappanahalli", "name": "Baiyappanahalli" },
+    { "id": "benniganahalli", "name": "Benniganahalli" },
+    { "id": "kr-pura", "name": "KR Pura" },
+    { "id": "singayyanapalya", "name": "Singayyanapalya" },
+    { "id": "garudacharpalya", "name": "Garudacharpalya" },
+    { "id": "hoodi", "name": "Hoodi" }
+  ],
+  "parts": [
+    {
+      "id": 1,
+      "svg": "/images/apps/namma-metro/purple-line-part-1.svg",
+      "stationIds": ["ksr", "majestic", "central-college", "vidhana-soudha"],
+      "hiddenId": "majestic",
+      "code": "NMT_41305",
+      "hint": "Has multi-modal connections between city and intercity buses and mainline trains."
+    },
+    {
+      "id": 2,
+      "svg": "/images/apps/namma-metro/purple-line-part-2.svg",
+      "stationIds": ["cubbon-park", "mg-road", "trinity"],
+      "hiddenId": "cubbon-park",
+      "code": "CFG_55641",
+      "hint": "It is named after a big park."
+    },
+    {
+      "id": 3,
+      "svg": "/images/apps/namma-metro/purple-line-part-3.svg",
+      "stationIds": ["halasuru", "indiranagar", "swami-vivekananda-road"],
+      "hiddenId": "indiranagar",
+      "code": "PAG_25907",
+      "hint": "It is named after a busy neighbourhood known for 100 Feet Road."
+    },
+    {
+      "id": 4,
+      "svg": "/images/apps/namma-metro/purple-line-part-4.svg",
+      "stationIds": ["baiyappanahalli", "benniganahalli", "kr-pura"],
+      "hiddenId": "kr-pura",
+      "code": "GEN_0488",
+      "hint": "It is named after a ruler who ruled the Mysuru state from 1799 to 1869."
+    },
+    {
+      "id": 5,
+      "svg": "/images/apps/namma-metro/purple-line-part-5.svg",
+      "stationIds": ["singayyanapalya", "garudacharpalya", "hoodi"],
+      "hiddenId": "garudacharpalya",
+      "code": "RBR_30587",
+      "hint": "Its official BMRCL station code is GDCP."
+    }
+  ]
+}

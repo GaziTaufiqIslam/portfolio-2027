@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 50 205 150" width="205" height="150" fill="none" role="img" aria-label="Namma Metro Purple Line, part 1 of 5">
+<path d="M0 58H525.601C530.019 58 533.601 54.4183 533.601 50V13C533.601 8.58172 537.183 5 541.601 5H856.186C858.308 5 860.343 5.84285 861.843 7.34315L902.5 48" transform="translate(49 95)" stroke="#A753FA" stroke-width="10"/>
+<line x1="132.5" y1="116" x2="132.5" y2="192" stroke="#94FA72" stroke-width="10"/>
+<circle id="station-01-ksr" data-station="ksr" cx="72" cy="153" r="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+<rect id="station-02-majestic" data-station="majestic" x="109.0" y="145" width="47" height="16" rx="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+<circle id="station-03-central-college" data-station="central-college" cx="188" cy="153" r="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+<circle id="station-04-vidhana-soudha" data-station="vidhana-soudha" cx="226" cy="153" r="8" fill="white" stroke="#4B400F" stroke-width="4"/>
+</svg>

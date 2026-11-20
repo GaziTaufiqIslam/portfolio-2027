@@ -11,7 +11,7 @@ export const apps: AppEntry[] = [
     slug: 'namma-metro-quizz',
     title: 'Namma Metro Quizz',
     description: 'Guess the Namma Metro station names from the map.',
-    status: 'coming-soon',
+    status: 'live',
   },
 ]
 

@@ -3,6 +3,7 @@ import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Loader } from '@/components/layout/Loader'
+import { SiteChrome } from '@/components/layout/SiteChrome'
 
 export const metadata: Metadata = {
   title: 'Gazi Taufiq — Product Designer | UI Engineer',
@@ -30,7 +31,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(sessionStorage.getItem('loaderSeen'))document.documentElement.classList.add('loader-seen')}catch(e){}",
+              "try{if(sessionStorage.getItem('loaderSeen')||location.pathname.indexOf('/apps/')===0)document.documentElement.classList.add('loader-seen')}catch(e){}",
           }}
         />
         {/* No JS: never show a loader that can't finish */}
@@ -39,11 +40,9 @@ export default function RootLayout({
         </noscript>
       </head>
       <body>
-        <Loader />
-        <Navbar />
-        {/* The tall navbar is in normal flow now, so no top offset is needed */}
-        <main>{children}</main>
-        <Footer />
+        <SiteChrome loader={<Loader />} navbar={<Navbar />} footer={<Footer />}>
+          {children}
+        </SiteChrome>
       </body>
     </html>
   )
