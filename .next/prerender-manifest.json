@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "326dab17ca5f8ba5090455e85c395e33",
-    "previewModeSigningKey": "a15e605ca2f7178e1ccd6c3b64710de99fc884864dc948eba3225dcb27fd9c4c",
-    "previewModeEncryptionKey": "0e379cd3c612fac0f85dd23b07d35b3ff678b1a6de20e939bb3f0770c761a29c"
-  }
-}
+{"version":4,"routes":{"/apps/namma-metro-quizz":{}},"dynamicRoutes":{"/apps/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":false,"fallbackRevalidate":false,"fallbackSourceRoute":"/apps/[slug]","routeRegex":"^\\/apps\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"912edaa7ae228c84d4d782d44de920fd","previewModeSigningKey":"7f3dff59c699f4ad5fef5f32d96d381341dea4a1ff6e9b9b54568775d184b435","previewModeEncryptionKey":"40a267100095cfe35ac978cca2688e84554f927ae6d741d2998882bca8d9809f"}}

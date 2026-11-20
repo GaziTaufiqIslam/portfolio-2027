@@ -1,0 +1,100 @@
+/*
+  Hero polaroids: a stack of three that spreads out on hover (Figma: hero-polaroids and
+  home-right-hovered). Every size and position is a design pixel value multiplied by --s, which
+  HeroPolaroids.tsx sets per breakpoint.
+
+  Each card has two states set by custom properties on the card:
+    resting: --l0 / --t0 / --r0   (stacked, tilted)
+    open:    --l1 / --t1          (spread out, level)
+*/
+
+.root {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(414px * var(--s));
+  height: calc(425.907px * var(--s));
+}
+
+/* While spread out the cards reach past the box, so lift the whole thing above its neighbours */
+.open {
+  z-index: 20;
+}
+
+/* The paper, watercolour and signature behind the stack. Stays put on hover. */
+.bg {
+  position: absolute;
+  left: 0;
+  top: calc(32.897px * var(--s));
+  width: 100%;
+  height: calc(393.01px * var(--s));
+  pointer-events: none;
+}
+
+/* Two crossed strips of tape on top of the stack. They disappear on hover. */
+.tapes {
+  position: absolute;
+  z-index: 5;
+  left: calc(162.549px * var(--s));
+  top: 0;
+  width: calc(111.038px * var(--s));
+  height: calc(89.015px * var(--s));
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+
+.open .tapes {
+  opacity: 0;
+}
+
+/* One polaroid: white card with 8px sides, 20px top and a deeper bottom edge */
+.card {
+  position: absolute;
+  box-sizing: border-box;
+  width: calc(246.426px * var(--s));
+  padding: calc(20px * var(--s)) calc(8px * var(--s)) calc(55.031px * var(--s));
+  background: var(--color-white);
+  border-radius: calc(4.025px * var(--s));
+  filter: drop-shadow(0 calc(8.05px * var(--s)) calc(8.05px * var(--s)) var(--color-shadow-200))
+    drop-shadow(0 calc(2.012px * var(--s)) calc(1.006px * var(--s)) var(--color-shadow-100));
+
+  left: var(--l0);
+  top: var(--t0);
+  transform: rotate(var(--r0));
+  transition:
+    left 450ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    top 450ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    padding-bottom 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.open .card {
+  left: var(--l1);
+  top: var(--t1);
+  transform: rotate(0deg);
+  padding-bottom: calc(36px * var(--s)); /* the caption strip of the stacked version is gone */
+}
+
+/* The photo window. All of a card's photos sit on top of each other and one is shown at a time,
+   so a change is a clean swap with nothing loading in between. */
+.photo {
+  position: relative;
+  width: 100%;
+  height: calc(277.985px * var(--s));
+  border-radius: calc(2.012px * var(--s));
+  overflow: hidden;
+}
+
+.shot {
+  opacity: 0;
+}
+
+.shot.on {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tapes,
+  .card {
+    transition: none;
+  }
+}

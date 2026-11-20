@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import { Chip } from '@/components/ui/Chip'
+import { HeroPolaroids } from './HeroPolaroids'
+import { getHeroPhotoGroups } from '@/lib/heroPhotos'
 
 const keywords = [
   'Design Engineer',
@@ -53,17 +55,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right — hero photo (placeholder, custom illustration coming soon) */}
-        <div className="shrink-0 relative w-[320px] h-[380px] 2xl:mr-16">
-          <Image
-            src="/images/hero-photo.png"
-            alt="Gazi Taufiq"
-            fill
-            className="object-cover"
-            sizes="320px"
-            priority
-          />
-        </div>
+        <HeroPolaroids groups={getHeroPhotoGroups()} className="2xl:mr-16" />
       </div>
     </section>
   )
