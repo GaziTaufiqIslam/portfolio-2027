@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import { flushSync } from 'react-dom'
 import { cn } from '@/lib/utils'
+import { playSound } from '@/lib/sound'
 import styles from './Decorative.module.css'
 
 /**
@@ -29,6 +30,9 @@ const STORAGE_KEY = 'decorativePositions'
 
 /** How long the sticker takes to catch up with the pointer (ms). Bigger = lazier trail. */
 const TRAIL_MS = 60
+/** Played when a sticker is picked up (once it starts to move) and when it lands */
+const PICKUP_SOUND_SRC = '/audio/pickup.mp3'
+const PLACE_SOUND_SRC = '/audio/place.mp3'
 /** Movement under this (px) still counts as a click, not a drag. */
 const DRAG_THRESHOLD_PX = 3
 /** The sticker has "arrived" once it is within this many px of where it is heading. */
@@ -223,6 +227,7 @@ export function Decorative() {
     apply(d)
     const final = d.final
     if (final) {
+      playSound(PLACE_SOUND_SRC)
       // Commit the new left/top to the DOM first, then drop the offset, so there is no jump
       flushSync(() => setSaved((prev) => ({ ...prev, [d.id]: final })))
     }
@@ -275,6 +280,7 @@ export function Decorative() {
     if (!d.moved) {
       if (Math.hypot(e.clientX - d.startClient.x, e.clientY - d.startClient.y) < DRAG_THRESHOLD_PX) return
       d.moved = true
+      playSound(PICKUP_SOUND_SRC)
       d.lastTime = performance.now()
       d.raf = requestAnimationFrame(tick)
     }

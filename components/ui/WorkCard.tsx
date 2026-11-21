@@ -47,9 +47,11 @@ export function WorkCard({ project, variant = 'full' }: WorkCardProps) {
   }
 
   // ── Full variant (home page) ───────────────────────────────────────────────
+  // The card's border only shows on hover, so the card box bleeds out by its own padding
+  // (-mx = px + the 1px border). That keeps the text and image on the same edge as the rest of the page.
   return (
     <Link href={`/work/${project.slug}`} className="group block w-full">
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 w-full border border-transparent hover:border-[var(--color-primary-200)] hover:bg-[var(--color-white)] hover:shadow-soft rounded-2xl p-6 transition-all duration-300">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 -mx-[17px] px-4 py-6 md:-mx-[25px] md:px-6 border border-transparent hover:border-[var(--color-primary-200)] hover:bg-[var(--color-white)] hover:shadow-soft rounded-2xl transition-all duration-300">
 
         {/* Text column — fills available space, max 80% at 2xl+ */}
         <div className="flex flex-col gap-8 w-full lg:flex-1 lg:min-w-0 2xl:max-w-[80%]">

@@ -212,7 +212,7 @@ export function Navbar() {
       <header className="relative z-40 h-[120px] w-full">
         <nav
           aria-label="Primary"
-          className="max-w-[1600px] mx-auto px-12 h-full flex items-center justify-between"
+          className="max-w-[1600px] mx-auto px-6 md:px-12 h-full flex items-center justify-between"
         >
           <Brand />
 
@@ -236,7 +236,7 @@ export function Navbar() {
       >
         <nav
           aria-label="Primary (sticky)"
-          className="max-w-[1600px] mx-auto px-12 h-full flex items-center justify-between"
+          className="max-w-[1600px] mx-auto px-6 md:px-12 h-full flex items-center justify-between"
         >
           <Brand />
 

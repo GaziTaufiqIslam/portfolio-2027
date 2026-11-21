@@ -240,6 +240,9 @@
   .z-50 {
     z-index: 50;
   }
+  .-mx-\[17px\] {
+    margin-inline: calc(17px * -1);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -728,9 +731,6 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
-  .px-12 {
-    padding-inline: calc(var(--spacing) * 12);
-  }
   .px-\[10px\] {
     padding-inline: 10px;
   }
@@ -1016,6 +1016,9 @@
     }
   }
   @media (width >= 48rem) {
+    .md\:-mx-\[25px\] {
+      margin-inline: calc(25px * -1);
+    }
     .md\:block {
       display: block;
     }
@@ -1036,6 +1039,9 @@
     }
     .md\:items-center {
       align-items: center;
+    }
+    .md\:px-6 {
+      padding-inline: calc(var(--spacing) * 6);
     }
     .md\:px-9 {
       padding-inline: calc(var(--spacing) * 9);
