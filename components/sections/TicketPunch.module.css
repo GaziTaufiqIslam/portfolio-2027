@@ -1,0 +1,117 @@
+/*
+  Ticket punch. The pointer turns into a hole puncher inside this section, and a click on the
+  ticket punches a hole. Sizes are the Figma design pixels (ticket 170x273, hole 16px).
+*/
+.section {
+  position: relative;
+}
+/* Hide the real pointer only where there is one. On touch the puncher just sits next to the ticket. */
+@media (hover: hover) and (pointer: fine) {
+  .section {
+    cursor: none;
+  }
+}
+
+.stage {
+  position: relative;
+  flex: none;
+  width: 170px;
+  height: 273px;
+}
+.ticket {
+  position: absolute;
+  inset: 0;
+  overflow: hidden; /* a hole near the edge is cut off by the ticket */
+  touch-action: manipulation;
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+.ticket:focus-visible {
+  outline: 3px solid var(--color-primary-500);
+  outline-offset: 4px;
+}
+.ticket.ruined {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+/* The hole shows the page behind the ticket, lit from the top left (Figma: inner shadow 2/2/1). */
+.hole {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: var(--color-bg);
+  box-shadow:
+    inset 2px 2px 2px color-mix(in srgb, var(--color-black) 25%, transparent),
+    0.25px 0.25px 0.25px color-mix(in srgb, var(--color-white) 50%, transparent);
+  animation: punch 140ms ease-out;
+}
+@keyframes punch {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}
+
+.ruinedText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+}
+.ruinedText.show {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 250ms ease 200ms, transform 300ms cubic-bezier(0.2, 1.4, 0.4, 1) 200ms;
+}
+
+/* The puncher resting next to the ticket. It hands over to the pointer-sized one on hover. */
+.rest {
+  flex: none;
+  transition: opacity 200ms ease;
+}
+.rest.hidden {
+  opacity: 0;
+}
+
+/* The pointer. Moved from script with a transform, so it never triggers layout. */
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+.cursor.on {
+  opacity: 1;
+}
+.cursorImg {
+  transition: transform 80ms ease-out;
+}
+.cursor.pressed .cursorImg {
+  transform: rotate(-6deg) scale(0.96);
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket,
+  .ruinedText.show,
+  .cursorImg,
+  .rest {
+    transition: none;
+  }
+  .hole {
+    animation: none;
+  }
+}

@@ -80,13 +80,13 @@ interface Pose {
   cy: number
   /** Size relative to the exported SVG (1 = its first pose: largest, thickest line) */
   scale: number
-  /** Line opacity: 0.8 at the first pose fading to 0.4 at the last, and 0 on the trip back */
+  /** Line opacity: 0.4 at the first pose fading to 0.2 at the last, and 0 on the trip back */
   opacity: number
 }
 
 /** Opacity of a building's lines at its first pose (right-hand slot) and its last (far left). */
-const OPACITY_FIRST = 0.8
-const OPACITY_LAST = 0.4
+const OPACITY_FIRST = 0.4
+const OPACITY_LAST = 0.2
 
 /** Centre and relative size of a Figma box. `reference` is the first pose, which is scale 1. */
 function cellPose(cell: Cell, reference: Cell): Pose {

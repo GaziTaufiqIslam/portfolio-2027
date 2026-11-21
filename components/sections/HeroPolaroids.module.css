@@ -75,7 +75,7 @@
 }
 
 /* The photo window. All of a card's photos sit on top of each other and one is shown at a time,
-   so a change is a clean swap with nothing loading in between. */
+   so a change is a quick cross-fade with nothing loading in between. */
 .photo {
   position: relative;
   width: 100%;
@@ -86,15 +86,32 @@
 
 .shot {
   opacity: 0;
+  transition: opacity 150ms ease; /* photos cross-fade instead of cutting */
 }
 
 .shot.on {
   opacity: 1;
 }
 
+/* Same spread layout, shown when the page first loads (not on small screens, where hover is off) */
+@media (min-width: 640px) {
+  .intro {
+    z-index: 20;
+  }
+  .intro .tapes {
+    opacity: 0;
+  }
+  .intro .card {
+    left: var(--l1);
+    top: var(--t1);
+    transform: rotate(0deg);
+    padding-bottom: calc(36px * var(--s));
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .tapes,
-  .card {
+  .card,
+  .shot {
     transition: none;
   }
 }

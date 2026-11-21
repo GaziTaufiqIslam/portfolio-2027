@@ -404,7 +404,7 @@ export const aboutText = {
   systems: {
     heading: 'Think in Systems X Human in the Centre',
     paragraphs: [
-      'I love making things with my hand, be it in a workshop or sitting on a desk with a laptop.',
+      'I love making things with my hand, be it in a workshop or sitting at a desk with a laptop.',
       'My background is a bit of a mixed bag. First, I spent five years studying computer science and engineering. Applied those knowledge in making web sites for people.',
       'Now, I am finishing my Masters of Design in Retail Experience at National Institute of Design, Bangalore. This path taught me to think like a coder in systems and connections, but build for the real people.',
     ],
@@ -419,9 +419,9 @@ export const aboutText = {
   keepsMeGoing: {
     heading: 'What keeps me going',
     paragraphs: [
-      'Riding motorcycles gives me way more energy than caffeine. In weekends I play football and in the evening I shout for the not-so table toppers english club Manchester United.',
+      'Riding motorcycles gives me way more energy than caffeine. In weekends I play football and in the evening I shout for the not-so-table-toppers english club Manchester United.',
       'I watch a ton of movies, some of the people whose works I follow closely are Satyajit Ray, Wes Anderson and the Ghibli Studio. All these not only give me inspiration to create something new but helps me think in more ways than one.',
-      'I play relaxing but mind-intensive sim-games, create Pinterest boards of just random things that have a common pattern, sketch in monochrome, read fiction (specially thrillers and mysteries) and also poetry, mostly in my native tongue Bangla.',
+      'I play relaxing but mind-intensive sim-games, create Pinterest boards of just random things I admire, sketch in monochrome, read fiction (specially thrillers and mysteries) and also poetry, mostly in my native tongue Bangla.',
     ],
   },
 } satisfies Record<string, AboutText>

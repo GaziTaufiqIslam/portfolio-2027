@@ -569,6 +569,9 @@
   .gap-20 {
     gap: calc(var(--spacing) * 20);
   }
+  .gap-\[10px\] {
+    gap: 10px;
+  }
   .gap-x-6 {
     column-gap: calc(var(--spacing) * 6);
   }
@@ -754,6 +757,9 @@
   }
   .py-24 {
     padding-block: calc(var(--spacing) * 24);
+  }
+  .py-\[65px\] {
+    padding-block: 65px;
   }
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
@@ -944,12 +950,6 @@
     -webkit-user-select: none;
     user-select: none;
   }
-  .\[--reserved\:27\.5rem\] {
-    --reserved: 27.5rem;
-  }
-  .\[--reserved\:33rem\] {
-    --reserved: 33rem;
-  }
   .\[--reserved\:36rem\] {
     --reserved: 36rem;
   }
@@ -990,6 +990,14 @@
   .focus-visible\:outline-\[var\(--color-primary-500\)\]:focus-visible {
     outline-color: var(--color-primary-500);
   }
+  @media (width < 64rem) {
+    .max-lg\:items-center {
+      align-items: center;
+    }
+    .max-lg\:text-center {
+      text-align: center;
+    }
+  }
   @media (width >= 40rem) {
     .sm\:block {
       display: block;
@@ -1002,6 +1010,9 @@
     }
     .sm\:flex-row {
       flex-direction: row;
+    }
+    .sm\:gap-10 {
+      gap: calc(var(--spacing) * 10);
     }
   }
   @media (width >= 48rem) {
@@ -1035,9 +1046,6 @@
     .md\:pb-4 {
       padding-bottom: calc(var(--spacing) * 4);
     }
-    .md\:\[--reserved\:23rem\] {
-      --reserved: 23rem;
-    }
     .md\:\[--reserved\:27\.5rem\] {
       --reserved: 27.5rem;
     }
@@ -1046,6 +1054,9 @@
     }
   }
   @media (width >= 64rem) {
+    .lg\:mr-\[clamp\(0px\,11\.2vw\,161px\)\] {
+      margin-right: clamp(0px, 11.2vw, 161px);
+    }
     .lg\:block {
       display: block;
     }
@@ -1057,6 +1068,9 @@
     }
     .lg\:h-\[364px\] {
       height: 364px;
+    }
+    .lg\:min-h-\[423px\] {
+      min-height: 423px;
     }
     .lg\:min-h-\[520px\] {
       min-height: 520px;
@@ -1090,6 +1104,12 @@
     }
     .lg\:items-center {
       align-items: center;
+    }
+    .lg\:justify-between {
+      justify-content: space-between;
+    }
+    .lg\:gap-\[115px\] {
+      gap: 115px;
     }
     .lg\:py-0 {
       padding-block: 0px;

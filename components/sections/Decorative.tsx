@@ -12,6 +12,10 @@ import styles from './Decorative.module.css'
  * grid and the sticker lifts. Drop positions are remembered for the browser tab (sessionStorage),
  * and a double-click puts a sticker back where it started.
  *
+ * On load every sticker starts lifted, with the grid showing, as if the cursor were holding them
+ * all. They drop into place once the whole section is on screen (and the loader is done), or as
+ * soon as you pick one up.
+ *
  * Every size and offset is a design pixel value multiplied by `--s`, which the section sets per
  * breakpoint. Scaling the numbers (rather than using a CSS transform) shrinks the layout box too,
  * so narrower screens never scroll sideways.
@@ -113,12 +117,17 @@ interface Drag {
   reduceMotion: boolean
 }
 
+/** The stickers drop once the whole section is on screen. 0.99 absorbs sub-pixel rounding. */
+const DROP_AT_VISIBLE = 0.99
+
 export function Decorative() {
   const sectionRef = useRef<HTMLElement>(null)
   const drag = useRef<Drag | null>(null)
   const [saved, setSaved] = useState<Saved>({})
   const [heldId, setHeldId] = useState<string | null>(null)
   const [resettingId, setResettingId] = useState<string | null>(null)
+  // True until the intro drop: all stickers lifted and the grid visible
+  const [lifted, setLifted] = useState(true)
   // Stacking order, last = on top. Whatever you touched last sits above the rest.
   const [stack, setStack] = useState<string[]>(() => stickers.map((s) => s.id))
 
@@ -127,6 +136,43 @@ export function Decorative() {
     setSaved(readSaved())
   }, [])
 
+  // Drop the stickers once the whole section is on screen. The loader covers the page
+  // until it adds `loader-seen` to <html>, so only start watching after that.
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const html = document.documentElement
+    let io: IntersectionObserver | undefined
+    let mo: MutationObserver | undefined
+    const watch = () => {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          // On a screen shorter than the section it can never be fully visible: half is enough then
+          const needed = entry.boundingClientRect.height > window.innerHeight ? 0.5 : DROP_AT_VISIBLE
+          if (entry.intersectionRatio >= needed) {
+            setLifted(false)
+            io?.disconnect()
+          }
+        },
+        { threshold: [0, 0.5, DROP_AT_VISIBLE, 1] }
+      )
+      io.observe(section)
+    }
+    if (html.classList.contains('loader-seen')) {
+      watch()
+    } else {
+      mo = new MutationObserver(() => {
+        if (!html.classList.contains('loader-seen')) return
+        mo?.disconnect()
+        watch()
+      })
+      mo.observe(html, { attributes: true, attributeFilter: ['class'] })
+    }
+    return () => {
+      io?.disconnect()
+      mo?.disconnect()
+    }
+  }, [])
   useEffect(
     () => () => {
       if (drag.current) cancelAnimationFrame(drag.current.raf)
@@ -217,6 +263,7 @@ export function Decorative() {
     }
 
     setHeldId(id)
+    setLifted(false) // picking one up ends the intro for the others
     setStack((prev) => [...prev.filter((x) => x !== id), id])
     document.documentElement.classList.add('deco-dragging')
   }
@@ -280,7 +327,7 @@ export function Decorative() {
       className={cn(
         styles.section,
         'hidden sm:block [--s:0.5] md:[--s:0.6] lg:[--s:0.75] xl:[--s:0.85] 2xl:[--s:1]',
-        heldId && styles.dragging
+        (heldId || lifted) && styles.dragging
       )}
     >
       <div className={styles.grid} />
@@ -289,7 +336,7 @@ export function Decorative() {
         <div
           key={s.id}
           title="Click & hold to drag"
-          className={cn(styles.item, heldId === s.id && styles.held, resettingId === s.id && styles.resetting)}
+          className={cn(styles.item, heldId === s.id && styles.held, lifted && styles.lifted, resettingId === s.id && styles.resetting)}
           style={{
             ...positionStyle(s, saved[s.id]),
             width: px(s.cell[0]),

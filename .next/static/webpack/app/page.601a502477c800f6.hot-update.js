@@ -1,0 +1,21 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdate_N_E"]("app/page",{
+
+/***/ "(app-pages-browser)/./components/sections/TicketPunch.module.css":
+/*!****************************************************!*\
+  !*** ./components/sections/TicketPunch.module.css ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval(__webpack_require__.ts("// extracted by mini-css-extract-plugin\nmodule.exports = {\"section\":\"TicketPunch_section__vcaFk\",\"stage\":\"TicketPunch_stage__bt_Qa\",\"ticket\":\"TicketPunch_ticket__ftriC\",\"ruined\":\"TicketPunch_ruined__D8CaU\",\"hole\":\"TicketPunch_hole__Hh1kb\",\"punch\":\"TicketPunch_punch__Wdy8R\",\"ruinedText\":\"TicketPunch_ruinedText__ddZWG\",\"show\":\"TicketPunch_show__ivBt3\",\"rest\":\"TicketPunch_rest__MbiHs\",\"hidden\":\"TicketPunch_hidden__X84gM\",\"cursor\":\"TicketPunch_cursor__y4PQy\",\"on\":\"TicketPunch_on__2SDly\",\"cursorImg\":\"TicketPunch_cursorImg__uD7Ld\",\"pressed\":\"TicketPunch_pressed__QIMH2\"};\n    if(true) {\n      // 1795251212432\n      var cssReload = __webpack_require__(/*! ./node_modules/next/dist/compiled/mini-css-extract-plugin/hmr/hotModuleReplacement.js */ \"(app-pages-browser)/./node_modules/next/dist/compiled/mini-css-extract-plugin/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"/_next/\",\"esModule\":false,\"locals\":true});\n      module.hot.dispose(cssReload);\n      \n    }\n  \nmodule.exports.__checksum = \"c3d3e689e261\"\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL2NvbXBvbmVudHMvc2VjdGlvbnMvVGlja2V0UHVuY2gubW9kdWxlLmNzcyIsIm1hcHBpbmdzIjoiQUFBQTtBQUNBLGtCQUFrQjtBQUNsQixPQUFPLElBQVU7QUFDakI7QUFDQSxzQkFBc0IsbUJBQU8sQ0FBQyx3TUFBK0osY0FBYyxzREFBc0Q7QUFDalEsTUFBTSxVQUFVO0FBQ2hCO0FBQ0E7QUFDQTtBQUNBLHlCQUF5QiIsInNvdXJjZXMiOlsiL1VzZXJzL2d0YXVmaXFpc2xhbS9Eb2N1bWVudHMvQW1hZGV1cy1HUC9Qb3J0Zm9saW8vd2Vic2l0ZS9wb3J0Zm9saW8tMjAyNy9jb21wb25lbnRzL3NlY3Rpb25zL1RpY2tldFB1bmNoLm1vZHVsZS5jc3MiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5tb2R1bGUuZXhwb3J0cyA9IHtcInNlY3Rpb25cIjpcIlRpY2tldFB1bmNoX3NlY3Rpb25fX3ZjYUZrXCIsXCJzdGFnZVwiOlwiVGlja2V0UHVuY2hfc3RhZ2VfX2J0X1FhXCIsXCJ0aWNrZXRcIjpcIlRpY2tldFB1bmNoX3RpY2tldF9fZnRyaUNcIixcInJ1aW5lZFwiOlwiVGlja2V0UHVuY2hfcnVpbmVkX19EOENhVVwiLFwiaG9sZVwiOlwiVGlja2V0UHVuY2hfaG9sZV9fSGgxa2JcIixcInB1bmNoXCI6XCJUaWNrZXRQdW5jaF9wdW5jaF9fV2R5OFJcIixcInJ1aW5lZFRleHRcIjpcIlRpY2tldFB1bmNoX3J1aW5lZFRleHRfX2RkWldHXCIsXCJzaG93XCI6XCJUaWNrZXRQdW5jaF9zaG93X19pdkJ0M1wiLFwicmVzdFwiOlwiVGlja2V0UHVuY2hfcmVzdF9fTWJpSHNcIixcImhpZGRlblwiOlwiVGlja2V0UHVuY2hfaGlkZGVuX19YODRnTVwiLFwiY3Vyc29yXCI6XCJUaWNrZXRQdW5jaF9jdXJzb3JfX3k0UFF5XCIsXCJvblwiOlwiVGlja2V0UHVuY2hfb25fXzJTRGx5XCIsXCJjdXJzb3JJbWdcIjpcIlRpY2tldFB1bmNoX2N1cnNvckltZ19fdUQ3TGRcIixcInByZXNzZWRcIjpcIlRpY2tldFB1bmNoX3ByZXNzZWRfX1FJTUgyXCJ9O1xuICAgIGlmKG1vZHVsZS5ob3QpIHtcbiAgICAgIC8vIDE3OTUyNTEyMTI0MzJcbiAgICAgIHZhciBjc3NSZWxvYWQgPSByZXF1aXJlKFwiL1VzZXJzL2d0YXVmaXFpc2xhbS9Eb2N1bWVudHMvQW1hZGV1cy1HUC9Qb3J0Zm9saW8vd2Vic2l0ZS9wb3J0Zm9saW8tMjAyNy9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2NvbXBpbGVkL21pbmktY3NzLWV4dHJhY3QtcGx1Z2luL2htci9ob3RNb2R1bGVSZXBsYWNlbWVudC5qc1wiKShtb2R1bGUuaWQsIHtcInB1YmxpY1BhdGhcIjpcIi9fbmV4dC9cIixcImVzTW9kdWxlXCI6ZmFsc2UsXCJsb2NhbHNcIjp0cnVlfSk7XG4gICAgICBtb2R1bGUuaG90LmRpc3Bvc2UoY3NzUmVsb2FkKTtcbiAgICAgIFxuICAgIH1cbiAgXG5tb2R1bGUuZXhwb3J0cy5fX2NoZWNrc3VtID0gXCJjM2QzZTY4OWUyNjFcIlxuIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(app-pages-browser)/./components/sections/TicketPunch.module.css\n"));
+
+/***/ })
+
+});

@@ -106,8 +106,7 @@
 
   .heading { padding: 48px 48px 24px; }
   .text    { padding: 56px 48px; }
-  /* the scattered objects show from here, so no extra space is needed below */
-  .thanks  { padding: 80px 24px 0; }
+  .thanks  { padding: 80px 24px clamp(64px, calc(var(--u) * 120), 120px); }
 }
 
 /* ─── Large screens: the Figma grid ─── */
@@ -176,6 +175,6 @@
   }
 
   .thanks {
-    padding: calc(var(--u) * 120) 24px 0;
+    padding: calc(var(--u) * 120) 24px clamp(64px, calc(var(--u) * 120), 120px);
   }
 }

@@ -23,6 +23,8 @@ const CYCLE_MS = 1000
 const CLOSE_DELAY_MS = 150
 /** Below this width the spread would run off the screen, so it stays stacked */
 const MIN_SPREAD_WIDTH_PX = 640
+/** The cards start spread out and fold up this long after the loader ends, hinting at the hover. */
+const INTRO_HOLD_MS = 1000
 
 const CARD = { width: 246.426, openHeight: 20 + 277.985 + 36 }
 
@@ -40,6 +42,13 @@ const cards = [
   { rest: { left: 94.821, top: 48.378, rotate: 0 }, open: { left: COLUMN_X, top: COLUMN_TOP } },
 ] as const
 
+/**
+ * Which photo each card starts on (bottom, middle, top). polaroid-1--01 and polaroid-3--01 are the
+ * same picture, so the top card starts on its 4th photo. With these offsets the three cards show
+ * three different people/shots at every step of the cycle.
+ */
+const START_OFFSET = [0, 0, 3]
+
 /** Design pixels → scaled pixels */
 const px = (value: number) => `calc(${Math.round(value * 1000) / 1000}px * var(--s))`
 
@@ -51,15 +60,42 @@ interface HeroPolaroidsProps {
 
 export function HeroPolaroids({ groups, className }: HeroPolaroidsProps) {
   const [open, setOpen] = useState(false)
+  // Starts spread out (also in the server HTML), then folds up once the loader is done
+  const [intro, setIntro] = useState(true)
   const [tick, setTick] = useState(0)
   const closeTimer = useRef<number | undefined>(undefined)
 
+  const spread = open || intro
+  // The loader adds `loader-seen` to <html> when its swipe ends (or before first paint on a
+  // repeat visit). Fold the stack up INTRO_HOLD_MS after that.
+  useEffect(() => {
+    const html = document.documentElement
+    let hold: number | undefined
+    let observer: MutationObserver | undefined
+    const begin = () => {
+      hold = window.setTimeout(() => setIntro(false), INTRO_HOLD_MS)
+    }
+    if (html.classList.contains('loader-seen')) {
+      begin()
+    } else {
+      observer = new MutationObserver(() => {
+        if (!html.classList.contains('loader-seen')) return
+        observer?.disconnect()
+        begin()
+      })
+      observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+    }
+    return () => {
+      observer?.disconnect()
+      window.clearTimeout(hold)
+    }
+  }, [])
   // Change the photos once a second, only while spread out and only if motion is welcome
   useEffect(() => {
-    if (!open || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (!spread || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const timer = window.setInterval(() => setTick((n) => n + 1), CYCLE_MS)
     return () => window.clearInterval(timer)
-  }, [open])
+  }, [spread])
 
   useEffect(() => () => window.clearTimeout(closeTimer.current), [])
 
@@ -80,7 +116,7 @@ export function HeroPolaroids({ groups, className }: HeroPolaroidsProps) {
     <div
       role="img"
       aria-label="Polaroid photos of Gazi Taufiq"
-      className={cn(styles.root, open && styles.open, '[--s:0.75] lg:[--s:0.85] xl:[--s:1]', className)}
+      className={cn(styles.root, open && styles.open, intro && styles.intro, '[--s:0.75] lg:[--s:0.85] xl:[--s:1]', className)}
       onPointerEnter={onEnter}
       onPointerLeave={onLeave}
     >
@@ -90,7 +126,7 @@ export function HeroPolaroids({ groups, className }: HeroPolaroidsProps) {
 
       {cards.map((card, i) => {
         const photos = groups[i] ?? []
-        const current = photos.length ? tick % photos.length : 0
+        const current = photos.length ? (tick + (START_OFFSET[i] ?? 0)) % photos.length : 0
         return (
           <div
             key={i}
