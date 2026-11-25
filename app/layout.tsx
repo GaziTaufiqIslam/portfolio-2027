@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Loader } from '@/components/layout/Loader'
 import { SiteChrome } from '@/components/layout/SiteChrome'
+
+/** Google Tag Manager container */
+const GTM_ID = 'GTM-PCSRVMFC'
 
 export const metadata: Metadata = {
   title: 'Gazi Taufiq — Product Designer | UI Engineer',
@@ -40,6 +44,14 @@ export default function RootLayout({
         </noscript>
       </head>
       <body>
+        {/* Google Tag Manager. The root layout wraps every page, including /apps/. */}
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});`}
+        </Script>
+        <Script id="gtm-src" src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`} strategy="afterInteractive" />
         <SiteChrome loader={<Loader />} navbar={<Navbar />} footer={<Footer />}>
           {children}
         </SiteChrome>

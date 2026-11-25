@@ -129,7 +129,7 @@ body {
 
 /* ─── Site loader ────────────────────────────────────────── */
 /* Scroll is locked until the loader finishes. `loader-seen` is added to <html>
-   by the inline script in layout.tsx (repeat visits) or by Loader.tsx (after the swipe). */
+   by the inline script in layout.tsx (repeat visits) or by Loader.tsx (after the scribble). */
 html:not(.loader-seen) {
   overflow: hidden;
 }
@@ -191,50 +191,7 @@ html:not(.loader-seen) {
   animation: tram-bounce 800ms step-end infinite;
 }
 
-.loader-panel {
-  position: absolute;
-  inset: 0;
-  background-color: var(--color-primary-500);
-  transform: translateX(-100%);
-  will-change: transform;
-}
-
-/* Swipe: one panel slides in from the left (0–50%, fully covering at 50%),
-   then keeps going off the right (50–100%), revealing the page. Easing applies
-   to each half, so the panel is at rest, fully covering, at the 50% mark. */
-.loader-panel.is-wiping {
-  animation: loader-wipe 1000ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-/* Hides the lavender screen at exactly the moment the panel fully covers it */
-.loader-screen.is-wiping {
-  animation: loader-screen-hide 1000ms linear forwards;
-}
-
 /* The tram-bounce and city-b1…b4 keyframes are generated in components/layout/loaderScene.ts */
-
-@keyframes loader-wipe {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes loader-screen-hide {
-  0%,
-  49.9% {
-    visibility: visible;
-  }
-  50%,
-  100% {
-    visibility: hidden;
-  }
-}
 
 @keyframes loader-fade {
   to {
@@ -242,14 +199,11 @@ html:not(.loader-seen) {
   }
 }
 
-/* Reduced motion: no bounce, no city, no swipe, just a short fade. The buildings stay on stage 1. */
+/* Reduced motion: no bounce, no city, no scribble, just a short fade. The buildings stay on stage 1. */
 @media (prefers-reduced-motion: reduce) {
   .loader-tram,
   .city-building {
     animation: none;
-  }
-  .loader-panel {
-    display: none;
   }
   .loader-screen.is-wiping {
     animation: loader-fade 300ms ease forwards;
