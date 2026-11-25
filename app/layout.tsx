@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
@@ -30,6 +29,14 @@ export default function RootLayout({
     // suppressHydrationWarning: the inline script below adds a class to <html> before React hydrates
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Google Tag Manager: the standard loader, as the first of this layout's own <head> tags.
+            One inline script sets up dataLayer and then adds gtm.js, so the order is guaranteed.
+            The root layout wraps every page, including /apps/. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
+          }}
+        />
         <link rel="stylesheet" href="https://use.typekit.net/wsu5vat.css" />
         {/* Repeat visits (same tab session): hide the loader before first paint */}
         <script
@@ -44,14 +51,6 @@ export default function RootLayout({
         </noscript>
       </head>
       <body>
-        {/* Google Tag Manager. The root layout wraps every page, including /apps/. */}
-        <Script id="gtm-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});`}
-        </Script>
-        <Script id="gtm-src" src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`} strategy="afterInteractive" />
         <SiteChrome loader={<Loader />} navbar={<Navbar />} footer={<Footer />}>
           {children}
         </SiteChrome>
