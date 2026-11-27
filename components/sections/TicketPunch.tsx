@@ -17,8 +17,8 @@ const TICKET = { w: 170, h: 273 }
 const HOLE_R = 8
 /** The ticket is ruined once more than this share of its area is punched out, or after this many
     holes, whichever comes first. (6 holes cover about 2.6%, so the hole count is what triggers it.) */
-const RUIN_ABOVE = 0.1
-const RUIN_AFTER_HOLES = 6
+const RUIN_ABOVE = 0.5
+const RUIN_AFTER_HOLES = 25
 /** Puncher image size and the point of it that makes the hole (a share of its width / height):
     between the middle and the end of the lower jaw */
 const PUNCHER = { w: 163, h: 91, hotX: 0.18, hotY: 0.76 }

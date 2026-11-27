@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"components/layout/Loader.tsx -> gsap\":{\"id\":\"components/layout/Loader.tsx -> gsap\",\"files\":[\"static/chunks/_app-pages-browser_node_modules_gsap_index_js.js\"]},\"components/layout/Loader.tsx -> gsap/DrawSVGPlugin\":{\"id\":\"components/layout/Loader.tsx -> gsap/DrawSVGPlugin\",\"files\":[\"static/chunks/_app-pages-browser_node_modules_gsap_DrawSVGPlugin_js.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST="{}"

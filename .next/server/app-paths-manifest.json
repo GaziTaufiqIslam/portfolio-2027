@@ -1,3 +1,4 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/apps/namma-metro-quizz/page": "app/apps/namma-metro-quizz/page.js"
 }
